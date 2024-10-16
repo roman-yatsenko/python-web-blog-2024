@@ -1,11 +1,14 @@
-{% extends "blog/base.html" %}
+{% extends 'blog/base.html' %}
 
-{% block title %}{{ post.title }}{% endblock %}
+{% block title %}
+  {{ post.title }}
+{% endblock %}
 
 {% block content %}
   <h1 class="border-bottom border-2 pb-2">{{ post.title }}</h1>
-  <p class="date fst-italic text-secondary">
-    Опубліковано {{ post.publish }} автором {{ post.author }}
-  </p>
+  <p class="date fst-italic text-secondary">Опубліковано {{ post.publish }} автором {{ post.author }}</p>
   {{ post.body|linebreaks }}
-{% endblock content %}
+  <p>
+    <a href="{% url 'blog:post_share' post.id %}">Пошарити пост</a>
+  </p>
+{% endblock %}
