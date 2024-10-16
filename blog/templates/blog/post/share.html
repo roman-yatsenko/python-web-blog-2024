@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
   Пошарити пост
@@ -11,9 +12,9 @@
   {% else %}
     <h1>Пошарити "{{ post.title }}" електронною поштою</h1>
     <form method="post">
-      {{ form.as_p }}
+      {{ form|crispy }}
       {% csrf_token %}
-      <input type="submit" value="Надіслати e-mail" />
+      <input type="submit" class="btn btn-primary" value="Надіслати e-mail" />
     </form>
   {% endif %}
 {% endblock %}
