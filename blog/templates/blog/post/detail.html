@@ -1,4 +1,5 @@
 {% extends 'blog/base.html' %}
+{% load blog_tags %}
 
 {% block title %}
   {{ post.title }}
@@ -7,7 +8,7 @@
 {% block content %}
   <h1 class="border-bottom border-2 pb-2">{{ post.title }}</h1>
   <p class="date fst-italic text-secondary">Опубліковано {{ post.publish }} автором {{ post.author }}</p>
-  {{ post.body|linebreaks }}
+  {{ post.body|markdown }}
   <p>
     <a class="text-decoration-none" href="{% url 'blog:post_share' post.id %}">Пошарити пост</a>
   </p>
